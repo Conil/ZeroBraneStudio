@@ -3,6 +3,11 @@
         "type":"lib",
         "description":"The Hy namespace contains properties relevant to the current instance of the running Lua script, and a couple of utility methods.",
         "childs":{
+            "oUIRoot":{
+                "type":"value",
+                "valuetype":"Hy.UIElement",
+                "description":"Returns the root UI element."
+            },
             "bAbort":{
                 "type":"value",
                 "description":"(Read Only) Contains true if the Lua script should abort its operation. You should check this flag periodically, especially during lenghty operations."
@@ -158,6 +163,53 @@
                         "args":"(strPropertyName, [strNewValue])",
                         "returns":"()",
                         "example":"`Hy.ExecuteCommand('Project.OverrideMaterialProperty', 'supportBaseType', 'rect')`"
+                    },
+                    "SetRecipe":{
+                        "type":"function",
+                        "description":"It changes the current recipe. It will be applied instantly to all open models in the project.",
+                        "args":"(strRecipe)",
+                        "returns":"()"
+                    },
+                    "SetPostRecipe":{
+                        "type":"function",
+                        "description":"It changes the post recipe. It will be applied after all models are combined.",
+                        "args":"(strRecipe)",
+                        "returns":"()"
+                    }
+                }
+            },
+            "UIElement": {
+                "type":"class",
+                "description":"This class represents UI XML elements. You can get an instance of this class by executing `Hy.oUIRoot.oFindChildByName(strName)`.",
+                "childs":{
+                    "oFindChildByName":{
+                        "type":"function",
+                        "description":"It finds an element under his childs with the provided name.",
+                        "args":"(strName)",
+                        "returns":"(oUIElement)",
+                        "valuetype":"Hy.UIElement",
+                        "example":"`oPrintDialog = Hy.oUIRoot:oFindChildByName(\"PrintDialog\")`"
+                    },
+                    "FadeIn":{
+                        "type":"function",
+                        "description":"It displays the element with a fade effect.",
+                        "args":"(nSeconds)",
+                        "returns":"()",
+                        "example":"`oPrintDialog.FadeIn(0.3)`"
+                    },
+                    "FadeOut":{
+                        "type":"function",
+                        "description":"It hides the element with a fade effect.",
+                        "args":"(nSeconds)",
+                        "returns":"()",
+                        "example":"`oPrintDialog.FadeOut(0.3)`"
+                    },
+                    "SetValues":{
+                        "type":"function",
+                        "description":"(Only for ComboBox elements) It sets the values of a ComboBox with the comma-separated provided string.",
+                        "args":"(strValues)",
+                        "returns":"()",
+                        "example":"`oComboBox:SetValues(strValues)`"
                     }
                 }
             },
@@ -172,8 +224,8 @@
                     "strGetProperty":{
                         "type":"function",
                         "description":"Returns an arbitrarily-named property of the material, or an empty string if such a property was not defined in the material XML file. Note that materials inherit properties from their parents, (material groups or other materials) and this function automatically resolves these inheritances.",
-                        "args":"(strName)",
-                        "returns":"(strProperty)"
+                        "args":"(strName, dDefault/strDefault, strPrinterProfile, dLayerThickness)",
+                        "returns":"(strPropertyValue)"
                     }
                 }
             },
@@ -400,12 +452,6 @@
                         "description":"Waits until the slice display finishes displaying the current slice, and the screen goes blank. After this call, it is guaranteed that DisplaySlice() will not block.",
                         "args":"()",
                         "returns":"()"
-                    },
-                    "QA-Test":{
-                        "type":"Test-Function",
-                        "description":"This is a test - Ignore",
-                        "args":"(nMilliseconds)",
-                        "returns":"(true)"
                     }
                 }
             }

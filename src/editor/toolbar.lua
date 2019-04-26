@@ -13,8 +13,8 @@ ide.config.toolbar.icons = {
   ID.COMPILE, ID.STEP, ID.STEPOVER, ID.STEPOUT, ID.RUNTO,
   ID.SEPARATOR,
   ID.BREAKPOINTTOGGLE, ID.BOOKMARKTOGGLE, ID.VIEWCALLSTACK, ID.VIEWWATCHWINDOW,
-  [ID.FINDINFILES] = false,
-  [ID.COMPILE] = false,
+  [ID.FINDINFILES] = true,
+  [ID.COMPILE] = true,
 }
 
 ide.config.toolbar.iconmap = {
