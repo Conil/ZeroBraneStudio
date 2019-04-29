@@ -32,14 +32,14 @@ end
 local colors = {
   HyLightTheme = {
     Background   = H'ffffff', -- white
-    Text         = H'212121', -- black
+    Text         = H'2e2e2e', -- black
     CurrentLine  = H'efefef', -- gray
     Selection    = H'd6d6d6', -- dark gray
-    Keyword      = H'78cc1f', -- light green
-    FunctionCall = H'2baaf1', -- light blue
-    Comment      = H'adadad', -- light gray
-    String       = H'e74aab', -- pink
-    Number       = H'20b094', -- turquoise
+    Keyword      = H'4069ff', -- lightish-blue
+    FunctionCall = H'2f7d00', -- green
+    Comment      = H'838383', -- light gray
+    String       = H'9d0000', -- pink
+    Number       = H'7593ff', -- turquoise
     Operator     = H'f1542b', -- orange
     FoldActive   = H'4069ff', -- Hyperganic blue
   }
